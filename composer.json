@@ -1,7 +1,8 @@
 {
   "name": "kevinkiel/wp-yaml-loader",
   "description": "Simple YAML Loader for wordpress",
-  "version": "0.3",
+  "keywords": ["wordpress", "yaml"],
+  "version": "1.0.1",
   "type": "library",
   "homepage": "https://github.com/kevinkiel/wp-yaml-loader",
   "license": "MIT",
