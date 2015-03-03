@@ -4,25 +4,39 @@ namespace KevinKiel\Yaml\Loader;
 
 use Symfony\Component\Yaml\Parser;
 
-class Yaml_Loader {
+/**
+ * Class YamlLoader
+ *
+ * @package KevinKiel\Yaml\Loader
+ */
+class YamlLoader {
 
 	private $config_path = '/../config';
+	private $config_file = 'config.yml';
 
 	public function __construct() {
 	}
 
+	/**
+	 * Set the config path
+	 *
+	 * @param string $config_path
+	 */
 	public function set_path( $config_path = '/../config' ) {
 		$this->config_path = $config_path;
 	}
 
+	/**
+	 * Load the YAML config's
+	 */
 	public function load() {
 
-		if ( file_exists( $this->config_path . '/config.yml' ) ) {
+		if ( file_exists( $this->config_path . '/' . $this->config_file ) ) {
 
 			$yaml = new Parser();
 
 			global $config;
-			$config = $yaml->parse( file_get_contents( $this->config_path . '/config.yml' ) );
+			$config = (array) $yaml->parse( file_get_contents( $this->config_path . '/' . $this->config_file ) );
 
 			if ( ! empty( $config['WP_ENV'] ) && file_exists( $this->config_path . '/config_' . $config['WP_ENV'] . '.yml' ) ) {
 				$env = $yaml->parse( file_get_contents( $this->config_path . '/config_' . $config['WP_ENV'] . '.yml' ) );

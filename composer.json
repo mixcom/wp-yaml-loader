@@ -1,8 +1,7 @@
 {
   "name": "kevinkiel/wp-yaml-loader",
   "description": "Simple YAML Loader for wordpress",
-  "keywords": ["wordpress", "yaml"],
-  "version": "1.0.2",
+  "keywords": ["wordpress", "wp", "yaml"],
   "type": "library",
   "homepage": "https://github.com/kevinkiel/wp-yaml-loader",
   "license": "MIT",
@@ -13,9 +12,9 @@
     }
   ],
   "autoload": {
-    "files": [
-      "src/KevinKiel/Yaml/Loader/yaml-loader.php"
-    ]
+    "psr-4": {
+      "KevinKiel\\Yaml\\Loader\\": "src/"
+    }
   },
   "require": {
     "symfony/yaml": "*"

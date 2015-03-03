@@ -18,7 +18,7 @@ $ composer require kevinkiel/wp-yaml-loader
 ## Usage wp-config.php (PHP)
 
 ```
-use KevinKiel\Yaml\Loader\Yaml_Loader as YamlLoader;
+use KevinKiel\Yaml\Loader\YamlLoader;
 
 $yaml = new YamlLoader;
 $yaml->set_path( __DIR__ . '/../config' );
