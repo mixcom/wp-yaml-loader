@@ -1,6 +1,6 @@
 # wp-yaml-loader
 
-Simple YAML config Loader for wordpress
+Simple YAML config Loader for WordPress
 
 ## Security
 
