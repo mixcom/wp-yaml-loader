@@ -49,7 +49,7 @@ FS_METHOD: ssh2
 DISALLOW_FILE_EDIT: true
 ```
 
-**(SALT) https://api.wordpress.org/secret-key/1.1/salt**
+**(SALT) http://www.kevinkiel.nl/salt.php**
 
 
 ```
