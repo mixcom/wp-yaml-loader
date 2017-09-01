@@ -26,6 +26,13 @@ class YamlLoader {
 		$this->config_path = $config_path;
 	}
 
+	public function preload( array $preload_config = array() ) {
+		global $config;
+		$config = array_merge( $config, $preload_config );
+
+		return $config;
+	}
+
 	/**
 	 * Load the YAML config's
 	 */
@@ -36,7 +43,10 @@ class YamlLoader {
 			$yaml = new Parser();
 
 			global $config;
-			$config = (array) $yaml->parse( file_get_contents( $this->config_path . '/' . $this->config_file ) );
+			if (empty($config)) {
+				$config = array();
+			}
+			$config = array_merge( $config, (array) $yaml->parse( file_get_contents( $this->config_path . '/' . $this->config_file ) ) );
 
 			if ( ! empty( $config['WP_ENV'] ) && file_exists( $this->config_path . '/config_' . $config['WP_ENV'] . '.yml' ) ) {
 				$env = $yaml->parse( file_get_contents( $this->config_path . '/config_' . $config['WP_ENV'] . '.yml' ) );
@@ -56,7 +66,7 @@ class YamlLoader {
 			}
 
 			foreach ( $config as $key => $value ) {
-				if ( ! is_array( $value ) ) {
+				if ( ! is_array( $value ) && ! defined( $key ) ) {
 					define( $key, $value );
 					unset( $config[ $key ] );
 				}
